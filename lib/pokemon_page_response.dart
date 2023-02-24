@@ -14,13 +14,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-class PokemonListing{
+class PokemonListing {
   final int id;
   final String name;
-  
-  PokemonListing({required this.id, required this.name});
-  
-factory PokemonListing.fromJson(Map<String, dynamic> json) {
+
+  String get imageUrl =>
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png';
+
+  PokemonListing({@required this.id, @required this.name});
+
+  factory PokemonListing.fromJson(Map<String, dynamic> json) {
     final name = json['name'];
     final url = json['url'] as String;
     final id = int.parse(url.split('/')[6]);
@@ -29,21 +32,20 @@ factory PokemonListing.fromJson(Map<String, dynamic> json) {
   }
 }
 
-class  PokemonPageResponse {
-  final List<PokemonListing> PokemonListings;
+class PokemonPageResponse {
+  final List<PokemonListing> pokemonListings;
   final bool canLoadNextPage;
 
-  PokemonPageResponse({
-      required this.PokemonListings, required this.canLoadNextPage
-    });
- 
-  factory PokemonPageResponse.fromJson(Map<String, dynamic> json){
+  PokemonPageResponse(
+      {@required this.pokemonListings, @required this.canLoadNextPage});
+
+  factory PokemonPageResponse.fromJson(Map<String, dynamic> json) {
     final canLoadNextPage = json['next'] != null;
-    final PokemonListings = (json['result'] as List).map((listingJson) => PokemonListing.fromJson(listingJson)).toList();
+    final pokemonListings = (json['results'] as List)
+        .map((listingJson) => PokemonListing.fromJson(listingJson))
+        .toList();
 
-      return PokemonPageResponse(PokemonListings: PokemonListings, canLoadNextPage: canLoadNextPage);
-        
+    return PokemonPageResponse(
+        pokemonListings: pokemonListings, canLoadNextPage: canLoadNextPage);
   }
-
 }
-

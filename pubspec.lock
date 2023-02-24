@@ -21,7 +21,7 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.1.1"
+    version: "6.1.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  charcode:
+    dependency: transitive
+    description:
+      name: charcode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.1"
   clock:
     dependency: transitive
     description:
@@ -89,19 +96,12 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.1.2"
+    version: "6.1.3"
   flutter_driver:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_lints:
-    dependency: "direct dev"
-    description:
-      name: flutter_lints
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -118,26 +118,19 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.5"
+    version: "0.12.2"
   http_parser:
     dependency: transitive
     description:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.2"
+    version: "3.1.4"
   integration_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  lints:
-    dependency: transitive
-    description:
-      name: lints
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   matcher:
     dependency: transitive
     description:
@@ -173,6 +166,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  pedantic:
+    dependency: transitive
+    description:
+      name: pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.1"
   platform:
     dependency: transitive
     description:
@@ -193,7 +193,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.5"
+    version: "4.3.3"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -277,5 +277,5 @@ packages:
     source: hosted
     version: "3.0.0"
 sdks:
-  dart: ">=2.18.6 <3.0.0"
+  dart: ">=2.17.0-0 <3.0.0"
   flutter: ">=1.16.0"

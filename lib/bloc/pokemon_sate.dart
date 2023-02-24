@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:pokedex/pokemon_page_response.dart';
 
 import '../pokemon_page_response.dart';
@@ -15,13 +16,12 @@ class PokemonPageLoadSuccess extends PokemonState {
   final bool canLoadNextPage;
 
   PokemonPageLoadSuccess({
-    required this.pokemonListings, required this.canLoadNextPage
+    @required this.pokemonListings, @required this.canLoadNextPage
   });
 }
 
-class PokemonPageLoadFailed extends PokemonState{
-  Error error;
+class PokemonPageLoadFailed extends PokemonState {
+  final Error error;
 
-  PokemonPageLoadFailed({required this.error});
-
+  PokemonPageLoadFailed({@required this.error});
 }

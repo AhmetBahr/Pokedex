@@ -6,7 +6,6 @@ import 'package:pokedex/pokemon_repository.dart';
 
 class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   final _pokemonRepository = PokemonRepository();
-  final String x = "Error";
 
   PokemonBloc() : super(PokemonInitial());
 
@@ -19,10 +18,10 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
         final pokemonPageResponse =
             await _pokemonRepository.getPokemonPage(event.page);
         yield PokemonPageLoadSuccess(
-            pokemonListings: pokemonPageResponse.PokemonListings,
+            pokemonListings: pokemonPageResponse.pokemonListings,
             canLoadNextPage: pokemonPageResponse.canLoadNextPage);
       } catch (e) {
-       // yield PokemonPageLoadFailed(error: e);
+        yield PokemonPageLoadFailed(error: e);
       }
     }
   }
