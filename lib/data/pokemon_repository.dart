@@ -24,4 +24,19 @@ class PokemonRepository {
     return PokemonPageResponse.fromJson(json);
   }
 
+  Future<dynamic> getPokemonInfo(int pokemonId)async{
+    final uri = Uri.http(baseUrl, '/api/v2/pokemon-species/$pokemonId');
+
+    try{
+      final response = await client.get(uri);
+      final json = jsonDecode(response.body);
+      print(json);
+    }catch(e)
+    {
+      print(e);
+    }
+  
+  }
+
+
 }
