@@ -33,4 +33,6 @@ class PokemonInfoResponse{
 
   }
 
+  get description => null;
+
 }

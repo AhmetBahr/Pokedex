@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/bloc/pokemon_event.dart';
 import 'package:pokedex/bloc/pokemon_sate.dart';
-import 'package:pokedex/pokemon_repository.dart';
+import 'package:pokedex/data/pokemon_repository.dart';
 
 
 class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {

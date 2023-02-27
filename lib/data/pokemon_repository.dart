@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:pokedex/data/pokemon_info_response.dart';
 import 'package:pokedex/data/pokemon_page_response.dart';
 import 'package:pokedex/data/pokemon_species_info.dart';
 
@@ -41,14 +42,14 @@ class PokemonRepository {
   }
 
 
-  Future<PokemonSpeciesInfoResponse> getPokemoSpeciesInfo(int pokemonId)async{
+  Future<PokemonInfoResponse> getPokemoSpeciesInfo(int pokemonId)async{
       final uri = Uri.http(baseUrl, '/api/v2/pokemon/$pokemonId');
 
       try{
         final response = await client.get(uri);
         final json = jsonDecode(response.body);
       // print(json);
-        return PokemonSpeciesInfoResponse.fromJson(json);
+        return PokemonInfoResponse.fromJson(json);
       }catch(e)
       {
         print(e);
