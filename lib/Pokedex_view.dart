@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/bloc/nav_cubit.dart';
 import 'package:pokedex/bloc/pokemon_bloc.dart';
 import 'package:pokedex/bloc/pokemon_sate.dart';
 
@@ -22,7 +23,9 @@ class PokedexView extends StatelessWidget{
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemCount: state.pokemonListings.length,
               itemBuilder: (context, index) {
-                return Card(
+                return GestureDetector(
+                onTap: () =>BlocProvider.of<NavCubit>(context).showPokemonDeatails(state.pokemonListings[index].id),
+                 child : Card(
                   child: GridTile(
                     child: Column(
                       children: [
@@ -31,6 +34,7 @@ class PokedexView extends StatelessWidget{
                       ],
                     ),
                   ),
+                ),
                 );
               },
             );
