@@ -1,7 +1,9 @@
  import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class PokemonSpeciesInfoResponse{
-   final String description;
+
+ class PokemonSpeciesInfoResponse {
+  final String description;
 
   PokemonSpeciesInfoResponse({@required this.description});
 
@@ -9,5 +11,4 @@ class PokemonSpeciesInfoResponse{
     return PokemonSpeciesInfoResponse(
         description: json['flavor_text_entries'][0]['flavor_text']);
   }
-
- }
+}

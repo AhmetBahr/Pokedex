@@ -6,55 +6,47 @@ import 'package:pokedex/data/pokemon_page_response.dart';
 import 'package:pokedex/data/pokemon_species_info.dart';
 
 class PokemonRepository {
-  final baseUrl = "pokeapi.co";
+  final baseUrl = 'pokeapi.co';
   final client = http.Client();
 
   Future<PokemonPageResponse> getPokemonPage(int pageIndex) async {
+    // pokemon?limit=200&offset=400
 
-
-    final queryParemetres = { 
-      'limit' : '200','offset':(pageIndex * 200).toString()
-
+    final queryParameters = {
+      'limit': '200',
+      'offset': (pageIndex * 200).toString()
     };
 
-    final uri = Uri.http(baseUrl, '/api/v2/pokemon', queryParemetres);
+    final uri = Uri.https(baseUrl, '/api/v2/pokemon', queryParameters);
 
     final response = await client.get(uri);
     final json = jsonDecode(response.body);
 
-
     return PokemonPageResponse.fromJson(json);
   }
 
-  Future<PokemonSpeciesInfoResponse> getPokemonInfo(int pokemonId)async{
-    final uri = Uri.http(baseUrl, '/api/v2/pokemon-species/$pokemonId');
+  Future<PokemonInfoResponse> getPokemonInfo(int pokemonId) async {
+    final uri = Uri.https(baseUrl, '/api/v2/pokemon/$pokemonId');
 
-    try{
+    try {
       final response = await client.get(uri);
       final json = jsonDecode(response.body);
-     // print(json);
-
-    }catch(e)
-    {
+      return PokemonInfoResponse.fromJson(json);
+    } catch (e) {
       print(e);
     }
-  
   }
 
+  Future<PokemonSpeciesInfoResponse> getPokemonSpeciesInfo(
+      int pokemonId) async {
+    final uri = Uri.https(baseUrl, '/api/v2/pokemon-species/$pokemonId');
 
-  Future<PokemonInfoResponse> getPokemoSpeciesInfo(int pokemonId)async{
-      final uri = Uri.http(baseUrl, '/api/v2/pokemon/$pokemonId');
-
-      try{
-        final response = await client.get(uri);
-        final json = jsonDecode(response.body);
-      // print(json);
-        return PokemonInfoResponse.fromJson(json);
-      }catch(e)
-      {
-        print(e);
-      }
-    
+    try {
+      final response = await client.get(uri);
+      final json = jsonDecode(response.body);
+      return PokemonSpeciesInfoResponse.fromJson(json);
+    } catch (e) {
+      print(e);
     }
-
+  }
 }

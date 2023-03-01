@@ -15,6 +15,8 @@ class NavCubit extends Cubit<int>{
 
   void popToPokedex(){
     emit(null);
+        pokemonDetailsCubit.clearPokemonDetails();
+
   }
 
 }
