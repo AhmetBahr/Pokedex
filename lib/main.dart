@@ -14,7 +14,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final pokemonDetailsCubit = PokemonDetailsCubit();
@@ -24,11 +23,12 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(providers: [
         BlocProvider(
             create: (context) =>
-                PokemonBloc()..add(PokemonPageRequest(page: 0),),),
-                BlocProvider(create: (context) => NavCubit(pokemonDetailsCubit: pokemonDetailsCubit)),
-                BlocProvider(create: (context) => pokemonDetailsCubit),
+                PokemonBloc()..add(PokemonPageRequest(page: 0))),
+        BlocProvider(
+            create: (context) =>
+                NavCubit(pokemonDetailsCubit: pokemonDetailsCubit)),
+        BlocProvider(create: (context) => pokemonDetailsCubit)
       ], child: AppNavigator()),
     );
   }
 }
-
